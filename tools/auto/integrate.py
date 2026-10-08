@@ -3,8 +3,12 @@ Cada declaração externa do rascunho vira um apelido local via __asm__("simbolo
 conflitar com declarações de outros trechos."""
 import json, re, sys
 SRC = '/home/claude/ffny/decomp/src/cod/000000.c'
-results = [json.loads(l) for l in open(sys.argv[1])]
-accepted = {r['name']: r['code'] for r in results if r['ok']}
+accepted = {}
+for path in sys.argv[1:]:
+    for l in open(path):
+        r = json.loads(l)
+        if r.get('ok', True) and 'code' in r:
+            accepted.setdefault(r['name'], r['code'])
 
 def transform(name, code):
     code = code.strip()
