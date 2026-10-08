@@ -32,7 +32,7 @@ make         # monta, linka e confere se bate com o original
 | Funções detectadas | 9.465 (mediana 0x70 bytes; 27 com mais de 4 KB) |
 | Símbolos de depuração | **Não** — o ELF está *stripped* |
 | Linguagem | C++ com exceções (há `.gcc_except_table`) |
-| Compilador | Família GCC 2.9x (mangling antigo, ex.: `Q26Realmc17Ps2FileDescriptor`, `__builtin_type_info`). Ainda falta confirmar se é EE-GCC 2.96 ou SN ProDG |
+| Compilador | **ee-gcc 2.95.x do SN ProDG, `-O2 -G0`** — confirmado com 5 funções idênticas (ver `tools/compiler_test/`). A versão exata (2.95.2-273a até 2.95.3-136) ainda não foi diferenciada; use `ee-gcc2.95.3-136` |
 | SDK da Sony | Bibliotecas 2.8.0 (`PsIIlibgraph2800`, `libpad 2800`, `libmc 2810`) |
 | Engine gráfica | EAGL 4.08.07 (EA Graphics Library) — caminho `D:/eagl/4.08.07-DefJam/` |
 | Áudio | EA SND 8.04.07 (`snddrv.irx`, arquivos `.abk/.ast`) |
@@ -61,9 +61,8 @@ alinhamentos de fim de seção (`ld_align_section_vram_end`) para o tamanho bate
 
 ## Próximos passos
 
-1. **Descobrir o compilador exato:** pegue algumas funções pequenas e simples e teste no
-   [decomp.me](https://decomp.me) com os presets de PS2 (EE-GCC 2.96 e versões do SN ProDG).
-   O que gerar o assembly idêntico é o compilador.
+1. ~~Descobrir o compilador~~ ✅ SN ProDG ee-gcc 2.95.x, `-O2 -G0`. No [decomp.me](https://decomp.me) use o
+   preset **ee-gcc2.95.3-136** com `-O2 -G0`.
 2. **Trocar o segmento `asm` por `c`** no `SLUS_210.04.yaml`. Assim o splat gera um arquivo `.s` por função
    em `asm/nonmatchings/` e arquivos `.c` com `INCLUDE_ASM`. Isso permite substituir uma função de cada vez.
 3. **Identificar bibliotecas conhecidas:** SDK da Sony (`sce*`), libc e EAGL. Não é código do jogo, então
