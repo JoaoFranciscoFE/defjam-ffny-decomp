@@ -1,0 +1,14 @@
+# Arquivos do jogo (cada um usa o próprio dump)
+SLUS_210.04
+SLUS_210.04.rom
+*.iso
+# Gerados
+asm/
+build/
+SLUS_210.04.ld
+SLUS_210.04.d
+undefined_funcs_auto.txt
+undefined_syms_auto.txt
+split.log
+.splache
+__pycache__/

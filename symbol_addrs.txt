@@ -1,0 +1,56 @@
+// Nomes identificados a partir do crt0 (_start)
+_start = 0x00100008; // type:func
+main = 0x001009F0; // type:func
+_InitSys = 0x00358968; // type:func
+FlushCache = 0x003539E0; // type:func
+_init = 0x00360870; // type:func
+_fini = 0x00360878; // type:func
+atexit = 0x003484B0; // type:func
+exit = 0x00348668; // type:func
+
+// Nomes sugeridos automaticamente a partir de strings de log "Classe::Metodo"
+// (tools/str_xref.py). Confira antes de confiar 100%.
+CRenderSubsystem_RegisterEnvMapTextures = 0x001090A0; // type:func
+CRenderSubsystem_Init = 0x00109630; // type:func
+CRenderSubsystem_NewRenderMethodLoader = 0x0010A598; // type:func
+CBackEnd_Init = 0x0010DEA8; // type:func
+CAnimation_InitMirror = 0x00113BC8; // type:func
+CAnimEventSystem_Reset = 0x00113DA0; // type:func
+CAnimEventSystem_ValidateEvents = 0x00113EE0; // type:func
+CModel_GetHierarchyTransform = 0x00117748; // type:func
+CModelContainer_Init = 0x00118320; // type:func
+CVertexInformation_Init = 0x0011EB88; // type:func
+CAssetManager_LoadAsset = 0x0016CD18; // type:func
+CEntityManager_AddEntityList = 0x0016D200; // type:func
+CEntityManager_AddEntity = 0x0016DCD0; // type:func
+CCinemaCamera_Init = 0x0016EDF8; // type:func
+CRunModuleFE_Init = 0x001771D8; // type:func
+CCrowdData_GetCrowdAnimBank = 0x001873C8; // type:func
+CCrowdAnimation_Init = 0x00187FD8; // type:func
+CLogic_Init = 0x0018B130; // type:func
+CStageEnvironment_InitInferno = 0x00191C18; // type:func
+CStageEnvironment_InitSubway = 0x00191CA8; // type:func
+CStageEnvironment_InitWindowMatch = 0x00191D58; // type:func
+CStageEnvironment_InitDemolition = 0x00191DD8; // type:func
+CStageEnvironment_InitClubLight = 0x00191EC8; // type:func
+CStageEnvironment_InitSandBag = 0x00191F48; // type:func
+CDemolitionCar_Init = 0x00193FA8; // type:func
+CCreatePlayerLogic_Init = 0x00196618; // type:func
+CArena_Init = 0x00197880; // type:func
+CArena_SetLightingParticle = 0x00199EC0; // type:func
+CArenaObject_LoadXML = 0x0019AC58; // type:func
+CIPCharacter_Init = 0x0019C2D8; // type:func
+CWPCreatePlayer_DebugDefaultInGame = 0x001A16A8; // type:func
+CWPCreatePlayer_DebugDefaultViewer = 0x001A17A0; // type:func
+CBaseAnimationData_Init = 0x001A3750; // type:func
+CSkilAnimationData_Init = 0x001A46E0; // type:func
+CBlazinAnimationData_Init = 0x001A5640; // type:func
+CBlazinAnimationData_GetAnimationBank = 0x001A5E48; // type:func
+CIntroExtroSubsystem_Init = 0x001A7078; // type:func
+CWP_Morph_Init = 0x001A9868; // type:func
+CWP_Texture_Init = 0x001A9BA0; // type:func
+CWP_Rope_Init = 0x001AAC40; // type:func
+CWP_Test_Init = 0x001ABC88; // type:func
+CWeaponControll_Init = 0x001C2608; // type:func
+CInstanceCrowd_Init = 0x001E9140; // type:func
+CREALSubsystem_Init = 0x001EAD70; // type:func
