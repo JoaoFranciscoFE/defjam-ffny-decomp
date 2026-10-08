@@ -23,6 +23,7 @@ options:
   ld_align_segment_vram_end: False
 
   create_asm_dependencies: True
+  make_full_disasm_for_code: True
 
   find_file_boundaries: True
 
@@ -70,7 +71,7 @@ segments:
     bss_size: 0xE6FB4
     subalign: null
     subsegments:
-      - [0x000000, asm, cod/000000] # .text
+      - [0x000000, c, cod/000000] # .text
       - [0x26EB00, data, cod/26EB00] # .data
       - [0x2AAE00, rodata, cod/2AAE00] # .rodata
       - [0x2FD280, gcc_except_table, cod/2FD280] # .gcc_except_table

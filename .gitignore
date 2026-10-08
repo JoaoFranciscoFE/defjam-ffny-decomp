@@ -12,3 +12,6 @@ undefined_syms_auto.txt
 split.log
 .splache
 __pycache__/
+
+# Compiladores baixados
+tools/compilers/
