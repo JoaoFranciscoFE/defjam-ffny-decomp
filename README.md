@@ -3,8 +3,8 @@
 Projeto inicial de decompilação do executável `SLUS_210.04` (versão americana).
 
 **Estado atual:** o build compila C com o compilador original (SN ProDG) e gera um binário **byte a byte
-idêntico** ao original. 169 de 9.467 funções já estão em C (5 decompiladas à mão + 164 vazias); o resto
-ainda está em assembly, esperando ser convertido.
+idêntico** ao original. **1.646 de 9.457 funções já estão em C** (5 à mão, 164 vazias e 1.477 geradas pelo m2c
+e conferidas automaticamente — ver `tools/auto/`). O resto ainda está em assembly.
 
 ## Requisitos
 
