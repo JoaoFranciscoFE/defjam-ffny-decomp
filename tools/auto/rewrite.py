@@ -31,7 +31,7 @@ def r_ge(c):
 
 def r_voidext(c):
     # externas com retorno desconhecido viram void (se o retorno for usado, nao compila e a variante cai)
-    return re.sub(r'^M2C_UNK (\w+\(.*\));\s*/\* extern \*/', r'void \1;', c, flags=re.M)
+    return re.sub(r'^M2C_UNK (\w+\(.*\));\s*/\* extern \*/', r'void \1; /* extern */', c, flags=re.M)
 
 RULES = [r_voidext, r_casts, r_compound, r_swapidx, r_this, r_ge]
 
