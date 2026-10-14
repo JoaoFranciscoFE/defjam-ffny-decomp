@@ -23,7 +23,7 @@ LDFLAGS := -EL -T $(BUILD_DIR)/$(BASENAME).ld -T undefined_syms_auto.txt -T unde
 
 C_FILES := $(shell find src -name '*.c' 2>/dev/null)
 S_FILES := $(shell find asm/data -name '*.s' 2>/dev/null)
-O_FILES := $(C_FILES:%.c=$(BUILD_DIR)/%.o) $(S_FILES:%.s=$(BUILD_DIR)/%.o) $(BUILD_DIR)/nonmatchings.o
+O_FILES := $(C_FILES:%.c=$(BUILD_DIR)/%.o) $(S_FILES:%.s=$(BUILD_DIR)/%.o) $(BUILD_DIR)/nonmatchings.o $(BUILD_DIR)/rodata.o
 
 ELF := $(BUILD_DIR)/$(BASENAME).elf
 ROM := $(BUILD_DIR)/$(BASENAME).rom
@@ -47,15 +47,18 @@ $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 # Funções ainda em assembly + linker script com todas as funções na ordem original
-$(BUILD_DIR)/$(BASENAME).ld $(BUILD_DIR)/nonmatchings.s: $(BASENAME).ld $(C_FILES) tools/gen_link.py
+$(BUILD_DIR)/$(BASENAME).ld $(BUILD_DIR)/nonmatchings.s $(BUILD_DIR)/rodata.s: $(BASENAME).ld $(C_FILES) tools/gen_link.py
 	@mkdir -p $(BUILD_DIR)
-	python3 tools/gen_link.py $(BASENAME).ld $(BUILD_DIR)/$(BASENAME).ld $(BUILD_DIR)/nonmatchings.s
+	python3 tools/gen_link.py $(BASENAME).ld $(BUILD_DIR)/$(BASENAME).ld $(BUILD_DIR)/nonmatchings.s $(BUILD_DIR)/rodata.s
+
+$(BUILD_DIR)/rodata.o: $(BUILD_DIR)/rodata.s
+	$(AS) $(ASFLAGS) -o $@ $<
 
 $(BUILD_DIR)/nonmatchings.o: $(BUILD_DIR)/nonmatchings.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(ELF): $(O_FILES) $(BUILD_DIR)/$(BASENAME).ld
-	$(LD) $(LDFLAGS) -o $@ $(BUILD_DIR)/nonmatchings.o
+	$(LD) $(LDFLAGS) -o $@ $(BUILD_DIR)/nonmatchings.o $(BUILD_DIR)/rodata.o
 
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary --gap-fill=0x00 $< $@
