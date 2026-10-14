@@ -3,8 +3,9 @@
 Projeto inicial de decompilação do executável `SLUS_210.04` (versão americana).
 
 **Estado atual:** o build compila C com o compilador original (SN ProDG) e gera um binário **byte a byte
-idêntico** ao original. **1.730 de 9.457 funções já estão em C** (27 à mão, 164 vazias e 1.539 geradas pelo m2c
-e conferidas automaticamente — ver `tools/auto/`). O resto ainda está em assembly.
+idêntico** ao original. **2.081 de 9.457 funções já estão em C** (a maioria gerada pelo m2c e conferida
+automaticamente, o resto ajustado à mão — ver `tools/auto/`), incluindo 15 com `switch`. O resto ainda está
+em assembly.
 
 ## Requisitos
 
@@ -80,6 +81,10 @@ sugestões: confira antes de confiar 100%.
 - **Linker script:** gerado a partir do do splat, com todas as funções na ordem original e cada uma presa no
   seu endereço original. Se uma função em C ficar maior que a original, o `ld` reclama
   ("cannot move location counter backwards").
+- **Funções com `switch`:** cada uma fica em `src/cod/switch/<nome>.c`, compilada separada, para o `.rodata`
+  do objeto ter só as jump tables dela. O `gen_link.py` reescreve o `.rodata` original em `build/rodata.s`:
+  tira as tabelas dessas funções, divide o resto em pedaços presos no endereço original (trocando `.align`
+  por `.org` com o deslocamento exato) e coloca o `.rodata` do objeto C no buraco.
 - O `.sbss` começa fixo em `0x3FD500` e o `.bss` em `0x3FD800`, como no ELF original.
 
 ## Próximos passos
@@ -92,8 +97,8 @@ sugestões: confira antes de confiar 100%.
    por outros projetos de PS2.
 4. **Abrir no Ghidra** (com a extensão de Emotion Engine) para entender a lógica e dar nome às coisas.
 5. **Ferramentas de assets em repositório separado:** extrator de `.viv` (formato BIG da EA).
-6. **Dados em C:** funções que usam constantes de `.rodata` (floats, strings, jump tables) ainda precisam de
-   um jeito de colocar esses dados no lugar certo. Por enquanto, prefira funções que não usam `.rodata`.
+6. ~~Funções com `switch`~~ ✅ Ficam em `src/cod/switch/<nome>.c`; o build coloca a jump table gerada pelo
+   compilador no endereço da original. Floats e strings do `.rodata` já funcionam como `extern`.
 
 ## Sobre rodar nativo no PC
 
