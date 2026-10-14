@@ -29,9 +29,11 @@ def check_switch(name, code, workdir):
     total = sum(t[2] for t in tables) * 4
     if tables[-1][1] + tables[-1][2] * 4 - start != total:
         return False, 50, 'tabelas originais não contíguas'
-    if len(data) != total:
+    # a última tabela pode ter palavras zero de alinhamento no fim (o build preenche com zero)
+    if len(data) > total or (total - len(data)) > 12 or \
+            any(ROM[start - 0x100000 + k] for k in range(len(data), total)):
         return False, 50, f'rodata {len(data)} vs {total}'
-    for k in range(0, total, 4):
+    for k in range(0, len(data), 4):
         if k not in relocs or relocs[k][0] != 'R_MIPS_32' or not relocs[k][1].startswith(f'.text.{name}'):
             return False, 50, f'tabela: entrada {k//4} sem relocação para a função'
         mine = struct.unpack_from('<I', data, k)[0]

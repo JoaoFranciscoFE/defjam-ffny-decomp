@@ -29,7 +29,11 @@ def r_this(c):
 def r_ge(c):
     return re.sub(r'return (.+?) >= 0;', r'if (\1 < 0) {\n        return 0;\n    }\n    return 1;', c)
 
-RULES = [r_casts, r_compound, r_swapidx, r_this, r_ge]
+def r_voidext(c):
+    # externas com retorno desconhecido viram void (se o retorno for usado, nao compila e a variante cai)
+    return re.sub(r'^M2C_UNK (\w+\(.*\));\s*/\* extern \*/', r'void \1;', c, flags=re.M)
+
+RULES = [r_voidext, r_casts, r_compound, r_swapidx, r_this, r_ge]
 
 def variants(code):
     seen = {code}
@@ -44,18 +48,18 @@ def variants(code):
 
 def work(x):
     n = x['name']
-    for c in itertools.islice(variants(x['code']), 12):
+    for c in itertools.islice(variants(x['code']), 16):
         ok, d, m = check(n, c, f'/tmp/claude-0/rw/{os.getpid()}')
         if ok:
             return {'name': n, 'ok': True, 'code': c}
     return {'name': n, 'ok': False}
 
 if __name__ == '__main__':
-    prev = [json.loads(l) for l in open('results.jsonl')]
+    prev = [json.loads(l) for l in open(sys.argv[1] if len(sys.argv) > 1 else 'results.jsonl')]
     manual = {json.loads(l)['name'] for l in open('manual.jsonl')}
     todo = [x for x in prev if not x['ok'] and 'code' in x and x['name'] not in manual
             and (1 <= x['diff'] <= 10 or (x['diff'] >= 100 and x['diff'] <= 103))]
-    out = 'results3.jsonl'
+    out = sys.argv[2] if len(sys.argv) > 2 else 'results3.jsonl'
     done = {json.loads(l)['name'] for l in open(out)} if os.path.exists(out) else set()
     todo = [x for x in todo if x['name'] not in done]
     print(len(todo), flush=True)

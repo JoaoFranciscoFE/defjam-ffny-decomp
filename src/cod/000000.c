@@ -5113,7 +5113,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00154708);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001547D8);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00154868);
+/* func_00154868: tem switch, está em src/cod/switch/func_00154868.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001549E8);
 
@@ -7495,7 +7495,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0017DD70);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0017DDF0);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0017DEA0);
+/* func_0017DEA0: tem switch, está em src/cod/switch/func_0017DEA0.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0017DF18);
 
@@ -9012,7 +9012,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A0660);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A0798);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A0818);
+/* func_001A0818: tem switch, está em src/cod/switch/func_001A0818.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A0868);
 
@@ -9519,7 +9519,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A7DC8);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A7F98);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A80E0);
+/* func_001A80E0: tem switch, está em src/cod/switch/func_001A80E0.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_001A8188);
 
@@ -15130,9 +15130,9 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0020F480);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0020F550);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0020F618);
+/* func_0020F618: tem switch, está em src/cod/switch/func_0020F618.c */
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0020F670);
+/* func_0020F670: tem switch, está em src/cod/switch/func_0020F670.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_0020F6C0);
 
@@ -24740,7 +24740,7 @@ s32 func_002F8C18(void *arg0) {
     return var_v0;
 }
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_002F8C40);
+/* func_002F8C40: tem switch, está em src/cod/switch/func_002F8C40.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_002F8CB8);
 
@@ -24904,7 +24904,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_002FDCA8);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_002FDE88);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_002FDF70);
+/* func_002FDF70: tem switch, está em src/cod/switch/func_002FDF70.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_002FDFF8);
 
@@ -25374,7 +25374,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00314A20);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00314B60);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00314CF8);
+/* func_00314CF8: tem switch, está em src/cod/switch/func_00314CF8.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00314D58);
 
@@ -25764,7 +25764,7 @@ INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00320D20);
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_003217C8);
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00321808);
+/* func_00321808: tem switch, está em src/cod/switch/func_00321808.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00321840);
 
@@ -25906,9 +25906,9 @@ s32 func_00324990(void) {
     return 1;
 }
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00324998);
+/* func_00324998: tem switch, está em src/cod/switch/func_00324998.c */
 
-INCLUDE_ASM("asm/nonmatchings/cod/000000", func_003249E0);
+/* func_003249E0: tem switch, está em src/cod/switch/func_003249E0.c */
 
 INCLUDE_ASM("asm/nonmatchings/cod/000000", func_00324A38);
 
